@@ -1,0 +1,12 @@
+#!/bin/bash
+# This script run praxisbot if no process is found.
+
+source $(dirname $0)/../config
+echo $token $email
+
+running=$(ps aux |grep 'python3 \./prax[i]s\.py')
+if [ "$running" == "" ]; then
+  /usr/bin/python3 $(dirname `dirname $0`)/praxis.py "$token" "$email" "$password" &
+else
+  echo "praxis is running :)"
+fi

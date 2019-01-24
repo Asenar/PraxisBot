@@ -1,0 +1,5 @@
+#!/bin/bash
+
+token=token-from-https://discordapp.com/developers/applications/
+email=an-email
+pass=a-password

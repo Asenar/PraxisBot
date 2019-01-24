@@ -1,0 +1,21 @@
+#!/bin/bash
+# This script kill any process that's run praxis.py then run praxisbot again
+
+source $(dirname $0)/../config
+
+# kill praxis daemon (and all daemon if more than one)
+praxis_pid="$(ps aux|grep 'python3 \./prax[i]s\.py'|awk '{print $2}')"
+
+while [ -n "$praxis_pid" ]; do
+    echo "killing '$praxis_pid'"
+    kill -9 $praxis_pid
+  #if [ "$praxis_pid" -gt 0 ]; then
+  #fi
+  praxis_pid=$(ps aux|grep 'prax[i]s\.py'|awk '{print $2}')
+done
+
+running=$(ps aux |grep 'prax[i]s.py')
+if [ "$running" == "" ]; then
+  echo "run again"
+  /usr/bin/python3 $(dirname `dirname $0`)/praxis.py "$token" "$email" "$password" &
+fi
