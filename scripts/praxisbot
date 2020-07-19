@@ -2,11 +2,13 @@
 # This script run praxisbot if no process is found.
 
 source $(dirname $0)/../config
-echo $token $email
+#echo $token $email
 
-running=$(ps aux |grep 'python3 \./prax[i]s\.py')
+#running=$(ps aux |grep 'python3 .*\./prax[i]s\.py')
+running=$(ps aux|grep 'python3.*prax[i]s')
 if [ "$running" == "" ]; then
-  /usr/bin/python3 $(dirname `dirname $0`)/praxis.py "$token" "$email" "$password" &
-else
-  echo "praxis is running :)"
+  cd /home/mona/PraxisBot
+  /usr/bin/python3 $(dirname `dirname $0`)/praxis.py "$token" "$email" "$password"
+#else
+#  echo "praxis still running :)"
 fi
