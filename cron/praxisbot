@@ -1,0 +1,14 @@
+# /etc/cron.d/praxisbot: crontab entries for praxisbot
+#
+# Create a symlink to that file
+#
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user	command
+# check every hour if praxisbot is ok
+0 * * * * mona /home/mona/scripts/praxisbot
+
+# restart praxisbot every day
+10 1 * * * mona /home/mona/scripts/restart-praxisbot
+
