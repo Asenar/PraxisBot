@@ -1,5 +1,7 @@
 #Install (Linux)
 
+apt install python3-websockets discord python3-dateutil python3-aiohttp python3-websockets 
+
 `pip3 install websockets`
 `pip3 install discord`
 `pip3 install python-dateutil`
